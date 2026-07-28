@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-paper text-ink font-body antialiased;
+}
+
+h1, h2, h3, h4 {
+  @apply font-display;
+}
+
+:focus-visible {
+  outline: 3px solid #2F6FED;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Route-line signature element: a dashed highway line used behind the
+   hero and as the progress tracker in the application form. */
+.route-line {
+  background-image: repeating-linear-gradient(
+    90deg,
+    #2F6FED,
+    #2F6FED 18px,
+    transparent 18px,
+    transparent 34px
+  );
+  height: 4px;
+  border-radius: 2px;
+}
+
+/* Slow ambient drift used behind hero/CTA panels for a premium, alive feel */
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-2%, 2%) scale(1.05); }
+}
+.animate-drift {
+  animation: drift 18s ease-in-out infinite;
+}
+
+/* Gentle continuous shimmer for the accent underline on section headings */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer-line {
+  background: linear-gradient(90deg, #2F6FED 0%, #5B8DF5 50%, #2F6FED 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Step transition used by the multi-step application form */
+@keyframes stepIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.animate-step {
+  animation: stepIn 0.4s ease-out;
+}
