@@ -6,6 +6,7 @@ const authRoutes = require('./routes/auth');
 const leadRoutes = require('./routes/leads');
 
 const app = express();
+app.set('trust proxy', 1);
 
 connectDB();
 
